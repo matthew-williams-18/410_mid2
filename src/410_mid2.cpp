@@ -6,18 +6,23 @@
 
 #include <iostream>
 #include <thread>
+#include <mutex>
+#include<atomic>
 using namespace std;
 
 const int ONE_MINUTE=60000;
 const int START_VALUE = 10000000;
 
-int isource = START_VALUE;
-int idest =0;
+atomic<int> isource(START_VALUE);
+atomic<int> idest(0);
 
 //global to control threads
 bool bDoWork=true;
 
+mutex m1;
+
 void report(int id, string s) {
+	const lock_guard<mutex> lg1(m1);
 	cout << "Thread " << id << ":" << s << endl;
 }
 
