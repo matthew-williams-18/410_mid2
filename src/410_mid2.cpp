@@ -4,6 +4,8 @@
 //				 the smallest possible critical sections
 //============================================================================
 
+// Matt Williams
+
 #include <iostream>
 #include <thread>
 #include <mutex>
